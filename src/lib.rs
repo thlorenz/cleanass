@@ -2,15 +2,15 @@
 #[cfg(feature = "strict")]
 macro_rules! assert {
     // Cleanup versions of standard assertions
-    ($cond:expr, $closure:expr) => {
+    ($cond:expr, $cleanup:stmt $(,)?) => {
         if !$cond {
-            $closure();
+            $cleanup;
         }
         ::core::assert!($cond)
     };
-    ($cond:expr, $closure:expr, $($arg:tt)+) => {
+    ($cond:expr, $cleanup:stmt, $($arg:tt)+) => {
         if !$cond {
-            $closure();
+            $cleanup;
         }
         ::core::assert!($cond, $($arg)+)
     };
@@ -20,20 +20,20 @@ macro_rules! assert {
 #[cfg(not(feature = "strict"))]
 macro_rules! assert {
     // Cleanup versions of standard assertions
-    ($cond:expr, $closure:expr) => {
+    ($cond:expr, $cleanup:stmt $(,)?) => {
         if !$cond {
-            $closure();
+            $cleanup;
         }
         ::core::assert!($cond)
     };
-    ($cond:expr, $closure:expr, $($arg:tt)+) => {
+    ($cond:expr, $cleanup:stmt, $($arg:tt)+) => {
         if !$cond {
-            $closure();
+            $cleanup;
         }
         ::core::assert!($cond, $($arg)+)
     };
     // Standard Assertions
-    ($cond:expr) => {
+    ($cond:expr $(,)?) => {
         if !$cond {
             ::core::assert!($cond)
         }
@@ -49,21 +49,21 @@ macro_rules! assert {
 #[macro_export]
 macro_rules! assert_eq {
     // Cleanup versions of standard assertions
-    ($left:expr, $right:expr, $closure:expr) => {
+    ($left:expr, $right:expr, $cleanup:stmt $(,)?) => {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(*left_val == *right_val) {
-                    $closure();
+                    $cleanup;
                 }
             }
         }
         ::core::assert_eq!($left, $right)
     };
-    ($left:expr, $right:expr, $closure:expr, $($arg:tt)+) => {
+    ($left:expr, $right:expr, $cleanup:stmt, $($arg:tt)+) => {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(*left_val == *right_val) {
-                    $closure();
+                    $cleanup;
                 }
             }
         }
@@ -75,21 +75,21 @@ macro_rules! assert_eq {
 #[macro_export]
 macro_rules! assert_eq {
     // Cleanup versions of standard assertions
-    ($left:expr, $right:expr, $closure:expr) => {
+    ($left:expr, $right:expr, $cleanup:stmt $(,)?) => {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(*left_val == *right_val) {
-                    $closure();
+                    $cleanup;
                 }
             }
         }
         ::core::assert_eq!($left, $right)
     };
-    ($left:expr, $right:expr, $closure:expr, $($arg:tt)+) => {
+    ($left:expr, $right:expr, $cleanup:stmt, $($arg:tt)+) => {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(*left_val == *right_val) {
-                    $closure();
+                    $cleanup;
                 }
             }
         }
@@ -110,21 +110,21 @@ macro_rules! assert_eq {
 #[macro_export]
 macro_rules! assert_ne {
     // Cleanup versions of standard assertions
-    ($left:expr, $right:expr, $closure:expr) => {
+    ($left:expr, $right:expr, $cleanup:stmt $(,)?) => {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(*left_val != *right_val) {
-                    $closure();
+                    $cleanup;
                 }
             }
         }
         ::core::assert_ne!($left, $right)
     };
-    ($left:expr, $right:expr, $closure:expr, $($arg:tt)+) => {
+    ($left:expr, $right:expr, $cleanup:stmt, $($arg:tt)+) => {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(*left_val != *right_val) {
-                    $closure();
+                    $cleanup;
                 }
             }
         }
@@ -136,21 +136,21 @@ macro_rules! assert_ne {
 #[macro_export]
 macro_rules! assert_ne {
     // Cleanup versions of standard assertions
-    ($left:expr, $right:expr, $closure:expr) => {
+    ($left:expr, $right:expr, $cleanup:stmt $(,)?) => {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(*left_val != *right_val) {
-                    $closure();
+                    $cleanup;
                 }
             }
         }
         ::core::assert_ne!($left, $right)
     };
-    ($left:expr, $right:expr, $closure:expr, $($arg:tt)+) => {
+    ($left:expr, $right:expr, $cleanup:stmt, $($arg:tt)+) => {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(*left_val != *right_val) {
-                    $closure();
+                    $cleanup;
                 }
             }
         }

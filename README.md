@@ -3,7 +3,7 @@
 [![Crates.io](https://img.shields.io/crates/v/cleanass)](https://crates.io/crates/cleanass)
 [![Docs.rs](https://docs.rs/cleanass/badge.svg)](https://docs.rs/cleanass)
 
-Enhances assert, assert_eq and assert_ne with cleanup closure which runs on failure.
+Enhances assert, assert_eq and assert_ne with cleanup statement which runs on failure.
 
 ### Usage
 
@@ -19,7 +19,7 @@ pub fn main() {
     {
         let a = 1;
         let b = 2;
-        assert_ne!(a, b, || eprintln!("Cleanup: {} != {} succeeded", a, b));
+        assert_ne!(a, b, eprintln!("Cleanup: {} != {} succeeded", a, b));
     }
     // If assert fails the cleanup function runs and prints the message
     {
@@ -27,7 +27,7 @@ pub fn main() {
         let b = 1;
         assert_ne!(
             a, b,
-            || eprintln!("Cleanup: {} != {} failed", a, b),
+            eprintln!("Cleanup: {} != {} failed", a, b),
             "Should not be equal"
         );
     }

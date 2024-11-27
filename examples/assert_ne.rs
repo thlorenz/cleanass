@@ -5,7 +5,7 @@ pub fn main() {
     {
         let a = 1;
         let b = 2;
-        assert_ne!(a, b, || eprintln!("Cleanup: {} != {} succeeded", a, b));
+        assert_ne!(a, b, eprintln!("Cleanup: {} != {} succeeded", a, b));
     }
     // If assert fails the cleanup function runs and prints the message
     {
@@ -13,7 +13,7 @@ pub fn main() {
         let b = 1;
         assert_ne!(
             a, b,
-            || eprintln!("Cleanup: {} != {} failed", a, b),
+            eprintln!("Cleanup: {} != {} failed", a, b),
             "Should not be equal"
         );
     }
