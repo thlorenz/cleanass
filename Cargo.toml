@@ -7,4 +7,6 @@ repository = "https://github.com/thlorenz/cleanass"
 readme = "README.md"
 license = "MIT"
 
-[dependencies]
+[features]
+strict = []
+default = ["strict"]

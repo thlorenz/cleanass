@@ -34,6 +34,14 @@ pub fn main() {
 }
 ```
 
+## Features
+
+### `strict`
+
+- disables versions of the assertions that don't require a closure ensuring that you don't
+accidentally forget to add a cleanup function
+- is on by default
+
 ## LICENSE
 
 MIT
