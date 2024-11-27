@@ -1,0 +1,10 @@
+[package]
+name = "cleanass"
+version = "0.0.1"
+edition = "2021"
+description = "Enhances assert, assert_eq and assert_ne with cleanup closure which runs on failure"
+repository = "https://github.com/thlorenz/cleanass"
+readme = "README.md"
+license = "MIT"
+
+[dependencies]
